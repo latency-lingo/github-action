@@ -1,5 +1,5 @@
 name: Latency Lingo | Performance Test Coverage
-description: Performance test reporting and build checks. Catch performance degradations before they impact your users. Integrates with many load testing tools including JMeter, k6, and Gatling.
+description: Performance test reporting and build checks. Integrates with load testing tools like JMeter, k6, and Gatling.
 branding:
   icon: zap
   color: gray-dark
