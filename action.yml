@@ -28,7 +28,7 @@ runs:
     - name: publish-results-file
       # result={"runId":"ab8e928c-f250-4748-b3c9-ce657c493bd4","status":"pass","thresholds":[{"status":"pass","description":""}]}
       run: |
-        ./latency-lingo-cli publish --file ${{ inputs.file }} --api-key $LATENCY_LINGO_API_KEY --label ${{ inputs.label }} --format ${{ inputs.format }} --env ${{ inputs.env }} > output.log | tee out
+        ./latency-lingo-cli publish --file "${{ inputs.file }}" --api-key "$LATENCY_LINGO_API_KEY" --label "${{ inputs.label }}" --format "${{ inputs.format }}" --env "${{ inputs.env }}" > output.log | tee out
         result=`grep "Test run status" output.log | awk '{print $6}'`
         echo "result=$result" >> $GITHUB_OUTPUT
       env:
