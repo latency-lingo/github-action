@@ -1,0 +1,45 @@
+name: Latency Lingo | Performance Test Coverage
+description: Performance test reporting and build checks. Catch performance degradations before they impact your users. Integrates with many load testing tools including JMeter, k6, and Gatling.
+branding:
+  icon: zap
+  color: gray-dark
+inputs:
+  api-key:
+    description: Latency Lingo API key.
+    required: true
+  file:
+    description: Results file containing the performance test logs to publish.
+    required: true
+  label:
+    description: Test scenario name to group this test run.
+    required: true
+  format:
+    description: Performance test tool used to generate the test logs.
+    default: jmeter
+  env:
+    description: Latency Lingo environment to use for API calls.
+    default: production
+runs:
+  using: composite
+  steps:
+    - name: install-cli
+      run: curl -L https://github.com/AnthonyBobsin/latency-lingo-cli/releases/latest/download/latency-lingo-cli_Linux_x86_64.tar.gz | tar -xz
+      shell: bash
+    - name: publish-results-file
+      # result={"runId":"ab8e928c-f250-4748-b3c9-ce657c493bd4","status":"pass","thresholds":[{"status":"pass","description":""}]}
+      run: |
+        ./latency-lingo-cli publish --file ${{ inputs.file }} --api-key $LATENCY_LINGO_API_KEY --label ${{ inputs.label }} --format ${{ inputs.format }} --env ${{ inputs.env }} > output.log | tee out
+        result=`grep "Test run status" output.log | awk '{print $6}'`
+        echo "result=$result" >> $GITHUB_OUTPUT
+      env:
+        LATENCY_LINGO_API_KEY: ${{ inputs.api-key }}
+      shell: bash
+    - name: set-build-status
+      run: |
+        status=${{fromJson(steps.publish-results-file.outputs.result).status}}
+        if [ $status = "pass" ]; then
+          exit 0
+        else
+          exit 1
+        fi
+      shell: bash
