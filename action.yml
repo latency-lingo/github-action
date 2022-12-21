@@ -37,11 +37,10 @@ runs:
       shell: bash
     - name: Set build status
       run: |
-        status=${{steps.publish-results-file.outputs.result}}
-        echo $status
+        status=${{fromJSON(steps.publish-results-file.outputs.result).status}}
+        if [ $status = "pass" ]; then
+          exit 0
+        else
+          exit 1
+        fi
       shell: bash
-      # if [ $status = "pass" ]; then
-      #     exit 0
-      #   else
-      #     exit 1
-      #   fi
