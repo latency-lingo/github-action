@@ -22,10 +22,11 @@ inputs:
 runs:
   using: composite
   steps:
-    - name: install-cli
+    - name: Install CLI
       run: curl -L https://github.com/AnthonyBobsin/latency-lingo-cli/releases/latest/download/latency-lingo-cli_Linux_x86_64.tar.gz | tar -xz
       shell: bash
-    - name: publish-results-file
+    - name: Publish results file
+      id: publish-results-file
       # result={"runId":"ab8e928c-f250-4748-b3c9-ce657c493bd4","status":"pass","thresholds":[{"status":"pass","description":""}]}
       run: |
         ./latency-lingo-cli publish --file "${{ inputs.file }}" --api-key "$LATENCY_LINGO_API_KEY" --label "${{ inputs.label }}" --format "${{ inputs.format }}" --env "${{ inputs.env }}" > output.log | tee out
@@ -34,7 +35,7 @@ runs:
       env:
         LATENCY_LINGO_API_KEY: ${{ inputs.api-key }}
       shell: bash
-    - name: set-build-status
+    - name: Set build status
       run: |
         status=${{steps.publish-results-file.outputs.result}}
         echo $status
