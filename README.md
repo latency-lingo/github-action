@@ -37,6 +37,7 @@ The action evaluates any thresholds for the test scenario referenced. If any of 
 ```
 
 ## References
+- [Latency Lingo](https://latencylingo.com)
 - [Github workflow syntax](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions)
 - [Integration on Github Marketplace](https://github.com/marketplace/actions/latency-lingo-performance-test-coverage)
 - [Integration Github repository](https://github.com/latency-lingo/github-action)
