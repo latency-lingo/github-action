@@ -36,7 +36,7 @@ runs:
       shell: bash
     - name: set-build-status
       run: |
-        status=${{fromJson(steps.publish-results-file.outputs.result).status}}
+        status=${{fromJSON(steps.publish-results-file.outputs.result).status}}
         echo $status
       shell: bash
       # if [ $status = "pass" ]; then
