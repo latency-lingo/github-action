@@ -14,6 +14,8 @@ The input arguments mimic the flags provided to the [`publish`](https://docs.lat
 
 The value of `file` should reference a file containing your test results. This depends on your test runner and strategy for running tests in CI/CD. Feel free to [reach out](mailto:support@latencylingo.com) for any support.
 
+The action evaluates any thresholds for the test scenario referenced. If any of the thresholds are violated, the action will fail the build.
+
 ## Examples
 ```yml
 - name: Latency Lingo
@@ -35,5 +37,6 @@ The value of `file` should reference a file containing your test results. This d
 ```
 
 ## References
-- https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions
-- https://docs.latencylingo.com/docs/intro
+- [Github workflow syntax](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions)
+- [Integration on Github Marketplace](https://github.com/marketplace/actions/latency-lingo-performance-test-coverage)
+- [Integration Github repository](https://github.com/latency-lingo/github-action)
