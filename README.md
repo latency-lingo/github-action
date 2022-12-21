@@ -8,9 +8,11 @@ I recommend visiting the [Latency Lingo documentation](https://docs.latencylingo
 ![](assets/logo_full.png)
 
 ## Usage
-Locate your API key in your [account settings](https://latencylingo.com/account/api-access) and add it as a secret to your Github repository. Next, add the Github Action as a step in your workflow.
+Locate your API key in [account settings](https://latencylingo.com/account/api-access) and add it as a secret to your Github repository. Next, add the Github Action as a step in your workflow.
 
-The value of `file` should be the path to the file containing your test results. This depends on your test runnner and strategy for running tests in CI/CD. Feel free to [reach out](mailto:support@latencylingo.com) for any support.
+The input arguments mimic the flags provided to the [`publish`](https://docs.latencylingo.com/docs/cli/commands/publish) CLI command.
+
+The value of `file` should reference a file containing your test results. This depends on your test runner and strategy for running tests in CI/CD. Feel free to [reach out](mailto:support@latencylingo.com) for any support.
 
 ## Examples
 ```yml
@@ -31,3 +33,7 @@ The value of `file` should be the path to the file containing your test results.
     label: github-action-gatling-test
     format: gatling
 ```
+
+## References
+- https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions
+- https://docs.latencylingo.com/docs/intro
