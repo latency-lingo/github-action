@@ -31,7 +31,7 @@ runs:
       run: |
         set -x
 
-        ./latency-lingo-cli publish --file "${{ inputs.file }}" --api-key "$LATENCY_LINGO_API_KEY" --label "${{ inputs.label }}" --format "${{ inputs.format }}" --env "${{ inputs.env }}" 2>&1 > output.log | tee out
+        ./latency-lingo-cli publish --file "${{ inputs.file }}" --api-key "$LATENCY_LINGO_API_KEY" --label "${{ inputs.label }}" --format "${{ inputs.format }}" --env "${{ inputs.env }}" > output.log
         cat output.log
 
         result=`grep "Test run status" output.log | awk '{print $6}'`
