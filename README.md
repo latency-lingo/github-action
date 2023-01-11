@@ -19,7 +19,7 @@ The action evaluates any thresholds for the test scenario referenced. If any of 
 ## Examples
 ```yml
 - name: Latency Lingo
-  uses: latency-lingo/github-action@v0.0.1
+  uses: latency-lingo/github-action@v0.0.2
   with:
     api-key: ${{ secrets.LATENCY_LINGO_API_KEY }}
     file: jmeter-results.jtl
@@ -28,7 +28,7 @@ The action evaluates any thresholds for the test scenario referenced. If any of 
 
 ```yml
 - name: Latency Lingo
-  uses: latency-lingo/github-action@v0.0.1
+  uses: latency-lingo/github-action@v0.0.2
   with:
     api-key: ${{ secrets.LATENCY_LINGO_API_KEY }}
     file: gatling-results.log
